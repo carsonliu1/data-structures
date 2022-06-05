@@ -13,15 +13,16 @@
 
 var LimitedArray = function(limit) {
   var storage = [];
-
+  var obj = {}
   var limitedArray = {};
   limitedArray.get = function(index) {
     checkLimit(index);
     return storage[index];
   };
-  limitedArray.set = function(index, value) {
+  limitedArray.set = function(index, key, value) {
     checkLimit(index);
-    storage[index] = value;
+    obj[key] = value
+    storage[index] = obj;
   };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
