@@ -19,10 +19,12 @@ var LimitedArray = function(limit) {
     checkLimit(index);
     return storage[index];
   };
-  limitedArray.set = function(index, key, value) {
+  limitedArray.set = function(index, value, key) {
     checkLimit(index);
-    obj[key] = value
-    storage[index] = obj;
+    if(!storage[index]) {
+      storage[index] = [];
+    }
+    storage[index].push(key,value)
   };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
